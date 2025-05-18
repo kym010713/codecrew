@@ -22,11 +22,6 @@ public class UserController {
 	    return "/user/signup";  // templates/signup.html 렌더링
 	}
 	
-	@GetMapping("/sign")
-	public String showSignForm() {
-	    return "/user/login";  // templates/signup.html 렌더링
-	}
-	
 	//회원가입 처리 
 	@PostMapping("/signup")
 	public String registerUser(@ModelAttribute UserDto userDto,
@@ -46,7 +41,7 @@ public class UserController {
 	    try {
 	        userService.registerUser(userDto);
 	        redirectAttributes.addFlashAttribute("message", "회원가입 성공!");
-	        return "redirect:/sign";
+	        return "redirect:/login";
 	    } catch (Exception e) {
 	        redirectAttributes.addFlashAttribute("errorMessage", "회원가입 중 오류가 발생했습니다.");
 	        return "redirect:/signup";
